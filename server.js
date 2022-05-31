@@ -96,16 +96,12 @@ app.post("/register", checkNotAutheticated, async (req,res) =>{
 
 //para salir de la pagina.
 app.delete('/logout', function(req, res, next) {
+    //"req.logout()"...es algo que nos setea passport para limpiar la sesion
     req.logout(function(err) {
       if (err) { return next(err); }
       res.redirect('/login');
     });
   });
-
-
-//     req.logOut() //esto es algo que nos setea passport para limpiar la sesion.
-//     res.redirect("/login") //y al hacer logout nos dirige a login.
-// })
 
 //pero para llamar a ese metodo delete, no podemos hacerlo a traves del browser,
 //sino que lo hacemos a traves de un post method. (libreria)
